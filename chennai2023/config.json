@@ -1,0 +1,41 @@
+{
+    "contest_name": "ICPC Chennai 2023",
+    "problems": [
+        {
+            "slug": "amalgam", 
+            "title": "Amalgam"
+        },
+        {
+            "slug": "basic-blooms", 
+            "title": "Basic Blooms"
+        },
+        {
+            "slug": "domino-drop", 
+            "title": "Domino Drop"
+        },
+        {
+            "slug": "git-gud", 
+            "title": "Git Gud"
+        },
+        {
+            "slug": "hex-hopping-horsey", 
+            "title": "Hex-Hopping Horsey"
+        },
+        {
+            "slug": "idola-tree", 
+            "title": "Idola-Tree"
+        },
+        {
+            "slug": "love-game", 
+            "title": "Love Game"
+        },
+        {
+            "slug": "random-room-rectangles", 
+            "title": "Random Room Rectangles"
+        },
+        {
+            "slug": "specious-shortcuts", 
+            "title": "Specious Shortcuts"
+        }
+    ]
+}
