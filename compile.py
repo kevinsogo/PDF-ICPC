@@ -164,7 +164,6 @@ combined_html = root / 'combined' / 'combined.html'
 print(f"\nCONVERTING TO HTML {combined_html} WITH TEMPLATE {template}")
 run(['pandoc', '-s', combined_md, '-o', combined_html, '--template', template, '--metadata', f"title={config['contest_name']}"])
 
-# TODO use proper template (with CSS)
 
 
 
