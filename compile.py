@@ -5,7 +5,6 @@ import html
 from pathlib import Path
 import re
 import shutil
-from string import ascii_uppercase
 from subprocess import run
 from sys import stderr
 from textwrap import dedent
@@ -52,12 +51,14 @@ root.mkdir(parents=True)
 
 
 (root / 'raw').mkdir(parents=True)
-problems = {}
+problem_data = {}
 slugs = []
 for problem in config['problems']:
 
     slug = problem['slug']
     print(f"\nPROBLEM {slug}")
+    label = problem['label']
+    print(f"{label = !s}")
     title = problem['title']
     print(f"{title = !s}")
     etitle = html.escape(title)
@@ -71,9 +72,10 @@ for problem in config['problems']:
     with (contest_path / 'raw' / f'{slug}.md').open() as f:
         statement = f.read()
 
-    if slug in problems:
+    if slug in problem_data:
         raise RuntimeError(f"Duplicate problem {slug!r}")
-    problems[slug] = {
+    problem_data[slug] = {
+        'label': label,
         'title': title,
         'etitle': etitle,
         'statement': statement,
@@ -93,18 +95,18 @@ print(f"\nCOMBINING TO {combined_md}")
 breakstr = '<br>'
 (root / 'combined').mkdir(parents=True)
 with combined_md.open('w') as f:
-    for letter, slug in zip(ascii_uppercase, slugs):
-        problem = problems[slug]
-        print(f"WRITING {letter}: {slug}: ({problem['title']})", file=stderr)
+    for slug in slugs:
+        problem = problem_data[slug]
+        print(f"WRITING {problem['label']}: {slug}: ({problem['title']})", file=stderr)
 
         print(dedent(f"""\
 
             
             <!-- NEW PROBLEM -->
 
-            <!-- {letter} - {problem['etitle']} -->
+            <!-- {problem['label']} - {problem['etitle']} -->
 
-            # {letter} &ndash; {problem['etitle']} {{.problem-title}}
+            # {problem['label']} &ndash; {problem['etitle']} {{.problem-title}}
 
 
             <div class="problem-contents">
@@ -162,7 +164,14 @@ with combined_md.open('w') as f:
 template = Path('template.html')
 combined_html = root / 'combined' / 'combined.html'
 print(f"\nCONVERTING TO HTML {combined_html} WITH TEMPLATE {template}")
-run(['pandoc', '-s', combined_md, '-o', combined_html, '--template', template, '--metadata', f"title={config['contest_name']}"])
+run([
+    'pandoc',
+    '-s', combined_md,
+    '-o', combined_html,
+    '--template', template,
+    '--metadata',
+    f"title={config['contest_name']}"
+])
 
 
 

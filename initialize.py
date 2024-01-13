@@ -1,7 +1,9 @@
 from argparse import ArgumentParser
+from itertools import count, product
 import json
 from pathlib import Path
 import shutil
+from string import ascii_uppercase
 
 from util import valid_slug
 
@@ -48,15 +50,20 @@ for slug in args.slugs:
 
 
 
+def labels():
+    for l in count(1):
+        yield from map(''.join, product(ascii_uppercase, repeat=l))
+
 
 
 print(f"\nWRITING CONFIG FILE")
 config = {
     'contest_name': 'REPLACE THIS WITH THE CONTEST NAME',
     'problems': [{
+        'label': label,
         'slug': slug,
         'title': f"REPLACE THIS WITH THE PROBLEM TITLE"
-    } for slug in args.slugs]
+    } for label, slug in zip(labels(), args.slugs)]
 }
 with (contest_path / 'config.json').open('w') as f:
     json.dump(config, f, indent=4)

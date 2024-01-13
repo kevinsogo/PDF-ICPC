@@ -2,39 +2,48 @@
     "contest_name": "ICPC Chennai 2023",
     "problems": [
         {
-            "slug": "amalgam", 
+            "label": "A",
+            "slug": "amalgam",
             "title": "Amalgam"
         },
         {
-            "slug": "basic-blooms", 
+            "label": "B",
+            "slug": "basic-blooms",
             "title": "Basic Blooms"
         },
         {
-            "slug": "domino-drop", 
+            "label": "C",
+            "slug": "domino-drop",
             "title": "Domino Drop"
         },
         {
-            "slug": "git-gud", 
+            "label": "D",
+            "slug": "git-gud",
             "title": "Git Gud"
         },
         {
-            "slug": "hex-hopping-horsey", 
+            "label": "E",
+            "slug": "hex-hopping-horsey",
             "title": "Hex-Hopping Horsey"
         },
         {
-            "slug": "idola-tree", 
+            "label": "F",
+            "slug": "idola-tree",
             "title": "Idola-Tree"
         },
         {
-            "slug": "love-game", 
+            "label": "G",
+            "slug": "love-game",
             "title": "Love Game"
         },
         {
-            "slug": "random-room-rectangles", 
+            "label": "H",
+            "slug": "random-room-rectangles",
             "title": "Random Room Rectangles"
         },
         {
-            "slug": "specious-shortcuts", 
+            "label": "I",
+            "slug": "specious-shortcuts",
             "title": "Specious Shortcuts"
         }
     ]
