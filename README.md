@@ -17,6 +17,8 @@ Throwaway scripts to generate a PDF from markdown problem statements.
     The specific version "52.5" probably isn't needed if you aren't encountering [this issue](https://stackoverflow.com/questions/68720486/how-to-fix-function-symbol-pango-context-set-round-glyph-positions-error
 ).
 
+- You need internet access while running this.
+
 
 # Usage
 
@@ -53,6 +55,11 @@ As an example, the statements for `chennai2023/` have been included in this repo
 python3 compile.py chennai2023
 ```
 to produce a PDF in `chennai2023/compiled/chennai2023.pdf`.
+
+
+# Customization
+
+The file `template.html` will be used as the template. You can edit it (including CSS) to customize the page. For example, you can change the font style and/or size with CSS.
 
 
 # Future
